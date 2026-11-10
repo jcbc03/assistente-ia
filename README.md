@@ -32,4 +32,4 @@ Este repositorio nao inclui modelos, texturas, sons, prompts ou codigo extraidos
 
 ## Estado
 
-Scaffold e contratos iniciais criados. O runtime Unity, a interface, a conversa, a TTS e qualquer backend ainda precisam ser implementados conforme [`docs/ROADMAP.md`](docs/ROADMAP.md).
+Scaffold e contratos iniciais criados; a primeira fatia de persistencia da configuracao esta em andamento. O runtime 3D, a interface, a conversa, a TTS e qualquer backend ainda precisam ser implementados conforme [`docs/ROADMAP.md`](docs/ROADMAP.md).

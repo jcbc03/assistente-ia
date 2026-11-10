@@ -1,0 +1,13 @@
+{
+  "name": "AssistenteIA.EditMode.Tests",
+  "references": [
+    "AssistenteIA.Runtime",
+    "Unity.Newtonsoft.Json"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
