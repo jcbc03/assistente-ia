@@ -1,5 +1,5 @@
-# Assistente IA
+# Backend opcional
 
-Projeto em preparação.
+O MVP nao depende deste diretorio nem de conexao com rede. Um backend so sera iniciado no marco M7, apos validar demanda por sincronizacao entre dispositivos e definir consentimento, autenticacao, retencao e exclusao.
 
-Adicione nesta pasta o arquivo com a descrição do que o assistente deverá fazer. A estrutura e a implementação serão definidas a partir desse documento.
+Decisao prevista: Python/FastAPI para API e PostgreSQL para dados de conta/sincronizacao. Ollama local continua sendo o caminho offline. Nunca colocar chaves de provedores no app Android.
