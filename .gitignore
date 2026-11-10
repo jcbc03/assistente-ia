@@ -14,6 +14,20 @@ node_modules/
 dist/
 build/
 
+# Unity generated files
+unity/Library/
+unity/Temp/
+unity/Obj/
+unity/Logs/
+unity/UserSettings/
+unity/Build/
+unity/Builds/
+unity/MemoryCaptures/
+unity/Recordings/
+unity/.vs/
+unity/*.csproj
+unity/*.sln
+
 # Editor and operating-system files
 .vscode/
 .idea/

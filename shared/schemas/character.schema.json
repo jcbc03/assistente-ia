@@ -1,0 +1,1107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jcbc03.github.io/assistente-ia/schemas/character-v2.schema.json",
+  "title": "Assistente IA Character Configuration",
+  "description": "Versioned, user-editable character, scene, voice and persona configuration.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "displayName",
+    "baseModel",
+    "body",
+    "face",
+    "eyes",
+    "hair",
+    "clothes",
+    "accessories",
+    "expressions",
+    "animations",
+    "scene",
+    "lighting",
+    "camera",
+    "voice",
+    "persona",
+    "memory"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "author": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "baseModel": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "lod": {
+      "enum": [
+        "auto",
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "graphicsPreset": {
+      "enum": [
+        "low",
+        "med",
+        "high"
+      ]
+    },
+    "body": {
+      "$ref": "#/$defs/body"
+    },
+    "face": {
+      "$ref": "#/$defs/face"
+    },
+    "eyes": {
+      "$ref": "#/$defs/eyes"
+    },
+    "hair": {
+      "$ref": "#/$defs/hair"
+    },
+    "clothes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/clothingItem"
+      }
+    },
+    "accessories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/accessory"
+      }
+    },
+    "expressions": {
+      "$ref": "#/$defs/expressions"
+    },
+    "animations": {
+      "$ref": "#/$defs/animations"
+    },
+    "scene": {
+      "$ref": "#/$defs/scene"
+    },
+    "lighting": {
+      "$ref": "#/$defs/lighting"
+    },
+    "camera": {
+      "$ref": "#/$defs/camera"
+    },
+    "voice": {
+      "$ref": "#/$defs/voice"
+    },
+    "persona": {
+      "$ref": "#/$defs/persona"
+    },
+    "memory": {
+      "$ref": "#/$defs/memory"
+    }
+  },
+  "$defs": {
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$"
+    },
+    "unit": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "signedUnit": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1
+    },
+    "vector3": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
+    },
+    "vector3Array": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "physics": {
+      "type": "object",
+      "properties": {
+        "stiffness": {
+          "$ref": "#/$defs/unit"
+        },
+        "damping": {
+          "$ref": "#/$defs/unit"
+        },
+        "gravity": {
+          "type": "number",
+          "minimum": -2,
+          "maximum": 2
+        },
+        "inertia": {
+          "$ref": "#/$defs/unit"
+        },
+        "collision": {
+          "type": "boolean"
+        },
+        "windResponse": {
+          "$ref": "#/$defs/unit"
+        }
+      },
+      "additionalProperties": true
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "heightM"
+      ],
+      "properties": {
+        "heightM": {
+          "type": "number",
+          "minimum": 1.2,
+          "maximum": 2.1
+        },
+        "proportions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/signedUnit"
+          }
+        },
+        "skin": {
+          "type": "object",
+          "properties": {
+            "color": {
+              "$ref": "#/$defs/color"
+            },
+            "undertone": {
+              "enum": [
+                "warm",
+                "cool",
+                "neutral"
+              ]
+            },
+            "blushColor": {
+              "$ref": "#/$defs/color"
+            },
+            "blushAmount": {
+              "$ref": "#/$defs/unit"
+            },
+            "tanAmount": {
+              "$ref": "#/$defs/unit"
+            },
+            "tanColor": {
+              "$ref": "#/$defs/color"
+            },
+            "shader": {
+              "type": "string"
+            },
+            "sss": {
+              "$ref": "#/$defs/unit"
+            },
+            "outlineWidth": {
+              "$ref": "#/$defs/unit"
+            },
+            "shadowColor": {
+              "$ref": "#/$defs/color"
+            }
+          },
+          "additionalProperties": true
+        },
+        "nails": {
+          "type": "object",
+          "properties": {
+            "color": {
+              "$ref": "#/$defs/color"
+            },
+            "length": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "additionalProperties": true
+        },
+        "markings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "slot": {
+                "type": "string"
+              },
+              "texture": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "color": {
+                "$ref": "#/$defs/color"
+              },
+              "uv": {
+                "$ref": "#/$defs/vector3Array"
+              },
+              "intensity": {
+                "$ref": "#/$defs/unit"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "physics": {
+          "type": "object",
+          "properties": {
+            "breast": {
+              "$ref": "#/$defs/unit"
+            },
+            "butt": {
+              "$ref": "#/$defs/unit"
+            },
+            "belly": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "face": {
+      "type": "object",
+      "properties": {
+        "shapeKeys": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/signedUnit"
+          }
+        },
+        "brows": {
+          "type": "object",
+          "properties": {
+            "styleId": {
+              "type": "string"
+            },
+            "color": {
+              "$ref": "#/$defs/color"
+            }
+          },
+          "additionalProperties": true
+        },
+        "makeup": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/colorAmount"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "colorAmount": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "amount": {
+          "$ref": "#/$defs/unit"
+        }
+      },
+      "additionalProperties": true
+    },
+    "eyes": {
+      "type": "object",
+      "properties": {
+        "styleId": {
+          "type": "string"
+        },
+        "irisColor": {
+          "$ref": "#/$defs/color"
+        },
+        "irisInner": {
+          "$ref": "#/$defs/color"
+        },
+        "irisOuter": {
+          "$ref": "#/$defs/color"
+        },
+        "scleraColor": {
+          "$ref": "#/$defs/color"
+        },
+        "pupilScale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 2
+        },
+        "pupilShape": {
+          "type": "string"
+        },
+        "highlightId": {
+          "type": "string"
+        },
+        "highlightIntensity": {
+          "$ref": "#/$defs/unit"
+        },
+        "highlightColor": {
+          "$ref": "#/$defs/color"
+        },
+        "lashStyle": {
+          "type": "string"
+        },
+        "lashColor": {
+          "$ref": "#/$defs/color"
+        },
+        "lashLength": {
+          "$ref": "#/$defs/unit"
+        },
+        "lookAt": {
+          "type": "string"
+        },
+        "lookAtSmoothing": {
+          "$ref": "#/$defs/unit"
+        },
+        "shader": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "hair": {
+      "type": "object",
+      "properties": {
+        "styleId": {
+          "type": "string"
+        },
+        "bangsId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "rootColor": {
+          "$ref": "#/$defs/color"
+        },
+        "tipColor": {
+          "$ref": "#/$defs/color"
+        },
+        "highlight": {
+          "$ref": "#/$defs/color"
+        },
+        "highlightMask": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shine": {
+          "$ref": "#/$defs/unit"
+        },
+        "anisotropy": {
+          "$ref": "#/$defs/unit"
+        },
+        "outline": {
+          "$ref": "#/$defs/unit"
+        },
+        "recede": {
+          "$ref": "#/$defs/signedUnit"
+        },
+        "hairline": {
+          "$ref": "#/$defs/signedUnit"
+        },
+        "physics": {
+          "$ref": "#/$defs/physics"
+        }
+      },
+      "additionalProperties": true
+    },
+    "clothingItem": {
+      "type": "object",
+      "required": [
+        "slot"
+      ],
+      "properties": {
+        "slot": {
+          "enum": [
+            "underwear_top",
+            "underwear_bottom",
+            "socks",
+            "tights",
+            "top",
+            "bottom",
+            "onesie",
+            "dress",
+            "outer",
+            "shoes",
+            "gloves",
+            "extra_layer"
+          ]
+        },
+        "itemId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "layer": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "colors": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/color"
+          }
+        },
+        "textureOverride": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "roughness": {
+          "$ref": "#/$defs/unit"
+        },
+        "metallic": {
+          "$ref": "#/$defs/unit"
+        },
+        "emissionColor": {
+          "$ref": "#/$defs/color"
+        },
+        "emissionIntensity": {
+          "$ref": "#/$defs/unit"
+        },
+        "patternId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "patternScale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "patternColor": {
+          "$ref": "#/$defs/color"
+        },
+        "wetness": {
+          "$ref": "#/$defs/unit"
+        },
+        "wear": {
+          "$ref": "#/$defs/unit"
+        },
+        "opacity": {
+          "$ref": "#/$defs/unit"
+        },
+        "clothPhysics": {
+          "type": "object",
+          "properties": {
+            "stiffness": {
+              "$ref": "#/$defs/unit"
+            },
+            "mass": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "drag": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "accessory": {
+      "type": "object",
+      "required": [
+        "slot",
+        "itemId"
+      ],
+      "properties": {
+        "slot": {
+          "enum": [
+            "head",
+            "face",
+            "ears",
+            "neck",
+            "wrists",
+            "hands",
+            "waist",
+            "back",
+            "props_held"
+          ]
+        },
+        "itemId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 10
+        },
+        "offset": {
+          "$ref": "#/$defs/vector3"
+        },
+        "physics": {
+          "$ref": "#/$defs/physics"
+        },
+        "emission": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "expressions": {
+      "type": "object",
+      "required": [
+        "defaultPreset",
+        "presets",
+        "visemes"
+      ],
+      "properties": {
+        "defaultPreset": {
+          "type": "string"
+        },
+        "presets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "weights": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/unit"
+                }
+              },
+              "blush": {
+                "$ref": "#/$defs/unit"
+              },
+              "overlay": {
+                "type": "string"
+              },
+              "vfx": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "visemes": {
+          "type": "object",
+          "properties": {
+            "engine": {
+              "enum": [
+                "ulipsync",
+                "viseme_map"
+              ]
+            },
+            "map": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/$defs/unit"
+                }
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "animations": {
+      "type": "object",
+      "properties": {
+        "idleSet": {
+          "type": "string"
+        },
+        "talkSet": {
+          "type": "string"
+        },
+        "listenSet": {
+          "type": "string"
+        },
+        "walkSet": {
+          "type": "string"
+        },
+        "danceSets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "bpm": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 300
+              }
+            },
+            "required": [
+              "id",
+              "bpm"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "emotes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "pokeZones": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "clip": {
+                "type": "string"
+              },
+              "enabled": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "activityAnimations": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "scene": {
+      "type": "object",
+      "properties": {
+        "backgroundId": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "skybox",
+            "equirect_plane",
+            "prefab_3d"
+          ]
+        },
+        "timeOfDay": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 24
+        },
+        "weather": {
+          "enum": [
+            "clear",
+            "clouds",
+            "rain",
+            "snow",
+            "fog",
+            "wind",
+            "storm"
+          ]
+        },
+        "weatherIntensity": {
+          "$ref": "#/$defs/unit"
+        },
+        "skyboxId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "roomPrefabId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "props": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "position": {
+                "$ref": "#/$defs/vector3Array"
+              },
+              "rotation": {
+                "$ref": "#/$defs/vector3Array"
+              },
+              "scale": {
+                "$ref": "#/$defs/vector3Array"
+              },
+              "color": {
+                "$ref": "#/$defs/color"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "ambientParticles": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "musicId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "musicVolume": {
+          "$ref": "#/$defs/unit"
+        },
+        "postFx": {
+          "type": "object",
+          "properties": {
+            "bloom": {
+              "$ref": "#/$defs/unit"
+            },
+            "vignette": {
+              "$ref": "#/$defs/unit"
+            },
+            "grain": {
+              "$ref": "#/$defs/unit"
+            },
+            "chromatic": {
+              "$ref": "#/$defs/unit"
+            },
+            "dof": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "light": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "intensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "yaw": {
+          "type": "number",
+          "minimum": -360,
+          "maximum": 360
+        },
+        "pitch": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "shadows": {
+          "type": "boolean"
+        },
+        "width": {
+          "$ref": "#/$defs/unit"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "lighting": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/light"
+        },
+        "fill": {
+          "$ref": "#/$defs/light"
+        },
+        "rim": {
+          "$ref": "#/$defs/light"
+        },
+        "ambient": {
+          "$ref": "#/$defs/light"
+        },
+        "coloredGels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/light"
+          }
+        },
+        "flicker": {
+          "$ref": "#/$defs/unit"
+        },
+        "followTimeOfDay": {
+          "type": "boolean"
+        },
+        "tiedToTimeOfDay": {
+          "type": "boolean"
+        },
+        "shadowColor": {
+          "$ref": "#/$defs/color"
+        },
+        "toonRamp": {
+          "$ref": "#/$defs/unit"
+        },
+        "outlineWidth": {
+          "$ref": "#/$defs/unit"
+        },
+        "outlineColor": {
+          "$ref": "#/$defs/color"
+        }
+      },
+      "additionalProperties": true
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "preset": {
+          "enum": [
+            "bust",
+            "close",
+            "full",
+            "three_quarter",
+            "profile",
+            "selfie",
+            "pip",
+            "screensaver",
+            "orbit_free"
+          ]
+        },
+        "fov": {
+          "type": "number",
+          "minimum": 10,
+          "maximum": 120
+        },
+        "distance": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "heightOffset": {
+          "type": "number"
+        },
+        "lookAt": {
+          "type": "string"
+        },
+        "followHeight": {
+          "type": "boolean"
+        },
+        "dofEnabled": {
+          "type": "boolean"
+        },
+        "dofFocus": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "orbitEnabled": {
+          "type": "boolean"
+        },
+        "shake": {
+          "$ref": "#/$defs/unit"
+        },
+        "dutchAngle": {
+          "type": "number",
+          "minimum": -45,
+          "maximum": 45
+        }
+      },
+      "additionalProperties": true
+    },
+    "voice": {
+      "type": "object",
+      "required": [
+        "engine",
+        "voiceId",
+        "locale"
+      ],
+      "properties": {
+        "engine": {
+          "enum": [
+            "piper",
+            "kokoro",
+            "outro_gratis"
+          ]
+        },
+        "voiceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locale": {
+          "const": "pt-BR"
+        },
+        "pitch": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2
+        },
+        "speed": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2
+        },
+        "volume": {
+          "$ref": "#/$defs/unit"
+        },
+        "style": {
+          "type": "string"
+        },
+        "lipsync": {
+          "enum": [
+            "ulipsync",
+            "viseme_map"
+          ]
+        },
+        "sampleRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "persona": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "pronouns": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "systemPrompt": {
+          "type": "string"
+        },
+        "traits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "speakingStyle": {
+          "type": "string"
+        },
+        "likes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dislikes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "boundaries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "greeting": {
+          "type": "string"
+        },
+        "userDisplayName": {
+          "type": "string",
+          "maxLength": 120
+        }
+      },
+      "additionalProperties": true
+    },
+    "memory": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "retentionDays": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 36500
+        },
+        "pinFacts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
