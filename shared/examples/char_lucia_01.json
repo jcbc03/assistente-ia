@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 2,
+  "id": "char_lucia_01",
+  "displayName": "Lucia",
+  "author": "local",
+  "createdAt": "2026-11-10T00:00:00Z",
+  "updatedAt": "2026-11-10T00:00:00Z",
+  "baseModel": "characters/lucia_base.vrm",
+  "lod": "auto",
+  "graphicsPreset": "med",
+  "body": {
+    "heightM": 1.62,
+    "proportions": {
+      "head": 0.06,
+      "torso": 0.0,
+      "arms": 0.04,
+      "legs": 0.08,
+      "hands": 0.0,
+      "feet": 0.0,
+      "neckLen": -0.1,
+      "shoulderWidth": 0.2,
+      "chestDepth": 0.05,
+      "bust": 0.1,
+      "waist": -0.05,
+      "hips": 0.08,
+      "thighs": 0.04,
+      "calves": 0.0
+    },
+    "skin": {
+      "color": "#F6C7B3",
+      "undertone": "warm",
+      "blushColor": "#E8949A",
+      "blushAmount": 0.35,
+      "tanAmount": 0.1,
+      "tanColor": "#C98462"
+    },
+    "nails": {
+      "color": "#E8C4C4",
+      "length": 0.2
+    },
+    "markings": [],
+    "physics": {
+      "breast": 0.45,
+      "butt": 0.35,
+      "belly": 0.1
+    }
+  },
+  "face": {
+    "shapeKeys": {
+      "faceWidth": 0.0,
+      "faceLength": 0.0,
+      "cheek": 0.1,
+      "jawWidth": -0.1,
+      "chin": 0.0,
+      "chinLength": 0.0,
+      "browHeight": 0.05,
+      "browSpacing": 0.0,
+      "browAngle": 0.0,
+      "browThickness": 0.0,
+      "eyeSize": 0.4,
+      "eyeSpacing": 0.1,
+      "eyeHeight": 0.05,
+      "eyeAngle": 0.05,
+      "eyeDepth": 0.0,
+      "eyelidUpper": 0.0,
+      "eyelidLower": 0.0,
+      "noseY": -0.05,
+      "noseZ": 0.0,
+      "noseWidth": -0.05,
+      "mouthY": 0.0,
+      "mouthWidth": 0.15,
+      "lipUpper": 0.05,
+      "lipLower": 0.05,
+      "earSize": 0.0
+    },
+    "makeup": {
+      "lipstick": {
+        "color": "#C45B6A",
+        "amount": 0.35
+      },
+      "liner": {
+        "color": "#1A1010",
+        "amount": 0.55
+      },
+      "eyeshadow": {
+        "color": "#6B3A2A",
+        "amount": 0.15
+      },
+      "blush": {
+        "color": "#E8949A",
+        "amount": 0.4
+      }
+    }
+  },
+  "eyes": {
+    "styleId": "eye.highlight_star.01",
+    "irisColor": "#3D6B4F",
+    "irisInner": "#7BA684",
+    "irisOuter": "#1E3A2C",
+    "scleraColor": "#FFF8F2",
+    "pupilScale": 0.55,
+    "highlightId": "hl.star.01",
+    "highlightIntensity": 0.8,
+    "lashStyle": "lash.long.01",
+    "lashColor": "#1A1010",
+    "lashLength": 0.6,
+    "lookAt": "camera",
+    "lookAtSmoothing": 0.4,
+    "shader": "toon"
+  },
+  "hair": {
+    "styleId": "hair.long_twin.02",
+    "bangsId": "bangs.side.01",
+    "color": "#2A1A12",
+    "rootColor": "#1A0E0A",
+    "tipColor": "#2A1A12",
+    "highlight": "#6B3A2A",
+    "shine": 0.45,
+    "outline": 0.3,
+    "physics": {
+      "stiffness": 0.4,
+      "damping": 0.5,
+      "gravity": 0.8,
+      "inertia": 0.5,
+      "collision": true,
+      "windResponse": 0.6
+    }
+  },
+  "clothes": [
+    {
+      "slot": "underwear_top",
+      "itemId": "cloth.bralette.01",
+      "enabled": true,
+      "layer": 1,
+      "colors": {
+        "primary": "#F2E6E6"
+      }
+    },
+    {
+      "slot": "underwear_bottom",
+      "itemId": "cloth.shorts.01",
+      "enabled": true,
+      "layer": 1,
+      "colors": {
+        "primary": "#F2E6E6"
+      }
+    },
+    {
+      "slot": "socks",
+      "itemId": "cloth.socks_crew.01",
+      "enabled": true,
+      "layer": 1,
+      "colors": {
+        "primary": "#FFFFFF"
+      }
+    },
+    {
+      "slot": "tights",
+      "itemId": null,
+      "enabled": false,
+      "layer": 1
+    },
+    {
+      "slot": "top",
+      "itemId": "cloth.sailor.01",
+      "enabled": true,
+      "layer": 2,
+      "colors": {
+        "primary": "#2C4A6E",
+        "secondary": "#F2F2F2",
+        "accent": "#D25A6A"
+      },
+      "roughness": 0.55,
+      "metallic": 0.0,
+      "emissionIntensity": 0.0
+    },
+    {
+      "slot": "bottom",
+      "itemId": "cloth.skirt.01",
+      "enabled": true,
+      "layer": 2,
+      "colors": {
+        "primary": "#2C4A6E"
+      },
+      "clothPhysics": {
+        "stiffness": 0.35,
+        "mass": 0.2,
+        "drag": 0.3
+      }
+    },
+    {
+      "slot": "onesie",
+      "itemId": null,
+      "enabled": false,
+      "layer": 2
+    },
+    {
+      "slot": "outer",
+      "itemId": null,
+      "enabled": false,
+      "layer": 3
+    },
+    {
+      "slot": "shoes",
+      "itemId": "cloth.sneaker.01",
+      "enabled": true,
+      "layer": 2,
+      "colors": {
+        "primary": "#F2F2F2",
+        "secondary": "#2C4A6E"
+      }
+    },
+    {
+      "slot": "gloves",
+      "itemId": null,
+      "enabled": false,
+      "layer": 2
+    },
+    {
+      "slot": "extra_layer",
+      "itemId": null,
+      "enabled": false,
+      "layer": 3
+    }
+  ],
+  "accessories": [
+    {
+      "slot": "head",
+      "itemId": "acc.ribbon.01",
+      "color": "#D25A6A",
+      "scale": 1.0,
+      "offset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "slot": "face",
+      "itemId": null
+    },
+    {
+      "slot": "ears",
+      "itemId": null
+    },
+    {
+      "slot": "neck",
+      "itemId": null
+    },
+    {
+      "slot": "wrists",
+      "itemId": null
+    },
+    {
+      "slot": "hands",
+      "itemId": null
+    },
+    {
+      "slot": "waist",
+      "itemId": null
+    },
+    {
+      "slot": "back",
+      "itemId": null
+    },
+    {
+      "slot": "props_held",
+      "itemId": null
+    }
+  ],
+  "expressions": {
+    "defaultPreset": "neutral",
+    "presets": {
+      "neutral": {
+        "weights": {},
+        "blush": 0.1
+      },
+      "joy": {
+        "weights": {
+          "mouthSmileLeft": 0.8,
+          "mouthSmileRight": 0.8,
+          "eyeSquintLeft": 0.2,
+          "eyeSquintRight": 0.2,
+          "browInnerUp": 0.2
+        },
+        "blush": 0.4,
+        "vfx": [
+          "heart_soft"
+        ]
+      },
+      "sad": {
+        "weights": {
+          "mouthFrownLeft": 0.7,
+          "mouthFrownRight": 0.7,
+          "browInnerUp": 0.5,
+          "eyeSquintLeft": 0.2
+        },
+        "overlay": "tear"
+      },
+      "angry": {
+        "weights": {
+          "browDownLeft": 0.8,
+          "browDownRight": 0.8,
+          "mouthPressLeft": 0.4,
+          "mouthPressRight": 0.4
+        },
+        "overlay": "anger_mark"
+      },
+      "surprise": {
+        "weights": {
+          "eyeWideLeft": 1.0,
+          "eyeWideRight": 1.0,
+          "browOuterUpLeft": 0.7,
+          "browOuterUpRight": 0.7,
+          "jawOpen": 0.35
+        }
+      },
+      "shy": {
+        "weights": {
+          "mouthSmileLeft": 0.3,
+          "mouthSmileRight": 0.3
+        },
+        "blush": 0.8
+      },
+      "love": {
+        "weights": {
+          "mouthSmileLeft": 0.6,
+          "mouthSmileRight": 0.6
+        },
+        "blush": 0.5,
+        "vfx": [
+          "hearts"
+        ]
+      }
+    },
+    "visemes": {
+      "engine": "viseme_map",
+      "map": {
+        "sil": {},
+        "AA": {
+          "jawOpen": 0.7
+        },
+        "E": {
+          "mouthStretchLeft": 0.4,
+          "mouthStretchRight": 0.4
+        },
+        "I": {
+          "mouthStretchLeft": 0.6,
+          "mouthStretchRight": 0.6
+        },
+        "O": {
+          "mouthPucker": 0.4,
+          "jawOpen": 0.3
+        },
+        "U": {
+          "mouthPucker": 0.7
+        },
+        "M": {
+          "mouthClose": 1.0
+        }
+      }
+    }
+  },
+  "animations": {
+    "idleSet": "idle_soft",
+    "talkSet": "talk_stand",
+    "listenSet": "listen_tilt",
+    "danceSets": [
+      {
+        "id": "dance.90bpm.01",
+        "bpm": 90
+      },
+      {
+        "id": "dance.120bpm.01",
+        "bpm": 120
+      }
+    ],
+    "emotes": {
+      "hello": "emote.wave.01",
+      "yes": "emote.nod.01",
+      "no": "emote.shake.01",
+      "think": "emote.think.01",
+      "laugh": "emote.laugh.01"
+    },
+    "pokeZones": {
+      "head": {
+        "clip": "poke.head.01",
+        "enabled": true
+      },
+      "hand_l": {
+        "clip": "poke.hand.01",
+        "enabled": true
+      },
+      "hand_r": {
+        "clip": "poke.hand.01",
+        "enabled": true
+      },
+      "shoulder": {
+        "clip": "poke.shoulder.01",
+        "enabled": true
+      }
+    },
+    "activityAnimations": true
+  },
+  "scene": {
+    "backgroundId": "scene.room_night.01",
+    "type": "equirect_plane",
+    "timeOfDay": 21.5,
+    "weather": "clear",
+    "weatherIntensity": 0.0,
+    "skyboxId": "sky.night_city.01",
+    "roomPrefabId": null,
+    "props": [
+      {
+        "id": "prop.desk_lamp.01",
+        "position": [
+          0.8,
+          0.9,
+          -1.6
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "ambientParticles": "dust_slow",
+    "musicId": null,
+    "musicVolume": 0.0,
+    "postFx": {
+      "bloom": 0.3,
+      "vignette": 0.15,
+      "grain": 0.05,
+      "chromatic": 0.0,
+      "dof": false
+    }
+  },
+  "lighting": {
+    "key": {
+      "color": "#FFE4C4",
+      "intensity": 1.1,
+      "yaw": 35.0,
+      "pitch": 20.0,
+      "shadows": true
+    },
+    "fill": {
+      "color": "#8AA0C8",
+      "intensity": 0.35
+    },
+    "rim": {
+      "color": "#B8D0FF",
+      "intensity": 0.55,
+      "width": 0.4
+    },
+    "ambient": {
+      "color": "#1A1430",
+      "intensity": 0.25,
+      "source": "skybox"
+    },
+    "shadowColor": "#3A2A40",
+    "toonRamp": 0.5,
+    "followTimeOfDay": true
+  },
+  "camera": {
+    "preset": "bust",
+    "fov": 32.0,
+    "distance": 1.8,
+    "heightOffset": 0.0,
+    "lookAt": "face",
+    "followHeight": true,
+    "dofEnabled": false,
+    "orbitEnabled": true
+  },
+  "voice": {
+    "engine": "piper",
+    "voiceId": "configure-licensed-pt-br-voice",
+    "locale": "pt-BR",
+    "pitch": 1.05,
+    "speed": 1.0,
+    "volume": 1.0,
+    "lipsync": "viseme_map",
+    "sampleRef": null
+  },
+  "persona": {
+    "systemPrompt": "Texto escrito e editavel pelo usuario.",
+    "traits": [
+      "curiosa",
+      "calma"
+    ],
+    "speakingStyle": "portugues brasileiro coloquial, frases curtas",
+    "likes": [],
+    "dislikes": [],
+    "boundaries": [],
+    "greeting": "",
+    "userDisplayName": ""
+  },
+  "memory": {
+    "enabled": true,
+    "retentionDays": 90,
+    "pinFacts": []
+  }
+}
